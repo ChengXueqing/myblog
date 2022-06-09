@@ -62,7 +62,8 @@ module.exports = {
           title: '诗和远方',
           children: [
             '/others/1.html',
-            '/others/2.html'
+            '/others/2.html',
+            '/others/3.html'
           ]
         }
       ],
