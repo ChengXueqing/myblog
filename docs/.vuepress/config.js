@@ -53,7 +53,8 @@ module.exports = {
         {
           title: '面试题合集',
           children: [
-            '/interview/1.html' 
+            '/interview/1.html',
+            '/interview/2.html'  
           ]
         }
       ],
@@ -63,7 +64,9 @@ module.exports = {
           children: [
             '/others/1.html',
             '/others/2.html',
-            '/others/3.html'
+            '/others/3.html',
+            '/others/4.html',
+            '/others/5.html'
           ]
         }
       ],
