@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Cheng\'s Blog',
-  description: '前端工程师的进阶之路',
+  description: '朝花夕拾 日记不辍',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
     ['link', { rel: 'icon', href: '/images/photo.jpg' }],
     ['link', { rel: 'manifest', href: '/images/photo.jpg' }],
@@ -45,7 +45,8 @@ module.exports = {
         {
           title: '进阶之路',
           children: [
-            '/advanced/1.html' 
+            '/advanced/1.html',
+            '/advanced/2.html'
           ]
         }
       ],
@@ -66,7 +67,8 @@ module.exports = {
             '/others/2.html',
             '/others/3.html',
             '/others/4.html',
-            '/others/5.html'
+            '/others/5.html',
+            '/others/6.html'
           ]
         }
       ],
