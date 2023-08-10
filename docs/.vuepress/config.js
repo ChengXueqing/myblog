@@ -17,8 +17,8 @@ module.exports = {
   themeConfig: {
     nav:[ // 导航栏配置
       {text: '前端基础', link: '/basic/1.html' },
-      {text: '进阶之路', link: '/advanced/1.html'},
       {text: '面试题合集', link: '/interview/1.html'},
+      {text: '静以修身', link: '/advanced/1.html'},
       {text: '诗和远方', link: '/others/1.html'},
       {text: 'Github', link: 'https://github.com/ChengXueqing'}      
     ],
@@ -38,6 +38,8 @@ module.exports = {
               '/basic/9.html',
               '/basic/10.html',
               '/basic/11.html',
+              '/basic/12.html',
+              '/basic/13.html',
             ]
           }
       ],
@@ -46,7 +48,6 @@ module.exports = {
           title: '进阶之路',
           children: [
             '/advanced/1.html',
-            '/advanced/2.html'
           ]
         }
       ],
