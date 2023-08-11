@@ -48,6 +48,7 @@ module.exports = {
           title: '进阶之路',
           children: [
             '/advanced/1.html',
+            '/advanced/2.html'
           ]
         }
       ],
