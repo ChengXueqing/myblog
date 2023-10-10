@@ -70,7 +70,8 @@ module.exports = {
             '/others/3.html',
             '/others/4.html',
             '/others/5.html',
-            '/others/6.html'
+            '/others/6.html',
+            '/others/7.html'
           ]
         }
       ],
