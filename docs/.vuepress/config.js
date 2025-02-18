@@ -14,6 +14,19 @@ module.exports = {
   markdown: {
     lineNumbers: true // 代码块是否显示行号
   },
+  // 支持评论
+  enhanceApp: ({ app }) => {
+    const requireComponent = require.context(
+      './components',
+      true,
+      /\.vue$/
+    );
+    requireComponent.keys().forEach(fileName => {
+      const componentConfig = requireComponent(fileName);
+      const componentName = componentConfig.default.name;
+      app.component(componentName, componentConfig.default);
+    });
+  },
   themeConfig: {
     nav:[ // 导航栏配置
       {text: '前端基础', link: '/basic/1.html' },

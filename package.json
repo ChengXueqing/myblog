@@ -13,14 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gitment": "0.0.3",
     "vuepress": "^0.14.4"
   },
   "devDependencies": {
-    "husky": "^6.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
