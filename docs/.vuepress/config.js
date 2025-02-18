@@ -1,10 +1,10 @@
 module.exports = {
-  title: 'Cheng\'s Blog',
+  title: '学庆的博客',
   description: '朝花夕拾 日记不辍',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
-    ['link', { rel: 'icon', href: '/images/photo.jpg' }],
-    ['link', { rel: 'manifest', href: '/images/photo.jpg' }],
-    ['link', { rel: 'apple-touch-icon', href: '/images/photo.jpg' }],
+    ['link', { rel: 'icon', href: '/images/photo.webp' }],
+    ['link', { rel: 'manifest', href: '/images/photo.webp' }],
+    ['link', { rel: 'apple-touch-icon', href: '/images/photo.webp' }],
     ['meta', { 'http-quiv': 'pragma', cotent: 'no-cache'}],
     ['meta', { 'http-quiv': 'expires', cotent: '0'}],
     ['meta', { 'http-quiv': 'pragma', cotent: 'no-cache, must-revalidate'}]
