@@ -1,6 +1,6 @@
 module.exports = {
   title: '学庆的博客',
-  description: '朝花夕拾 日记不辍',
+  description: '心静人自静 神清天地归',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
     ['link', { rel: 'icon', href: '/images/photo.webp' }],
     ['link', { rel: 'manifest', href: '/images/photo.webp' }],
