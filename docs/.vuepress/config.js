@@ -1,5 +1,5 @@
 module.exports = {
-  title: '学庆的博客',
+  title: '清净心',
   description: '心静人自静 神清天地归',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
     ['link', { rel: 'icon', href: '/images/photo.webp' }],
