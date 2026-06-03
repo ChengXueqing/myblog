@@ -15,6 +15,10 @@ import json
 from datetime import datetime
 from typing import Optional
 
+# 加载 .env 环境变量
+from dotenv import load_dotenv
+load_dotenv()
+
 import requests
 from fastapi import FastAPI, Request, HTTPException, Header, Depends
 from fastapi.responses import JSONResponse
