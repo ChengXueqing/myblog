@@ -21,5 +21,10 @@ Thumbs.db
 *.zip
 *.tar.gz
 
+# Env (contains secrets - DO NOT commit)
+.env
+.env.local
+.env.production
+
 # Convert script (one-time use)
 convert_md.py
