@@ -1,0 +1,95 @@
+baseURL = "https://chengxueqing.gitee.io/"
+languageCode = "zh-cn"
+title = "清净心"
+theme = "PaperMod"
+defaultContentLanguage = "zh-cn"
+
+# 启用中文搜索
+hasCJKLanguage = true
+
+# 静态文件目录
+staticDir = ["static"]
+
+# 内容目录
+contentDir = ["content"]
+
+# 部署设置
+publishDir = ["public"]
+
+# 构建设置
+enableGitInfo = false
+enableEmoji = true
+hasCJKLanguage = true
+
+# 代码高亮
+pygmentsStyle = "dracula"
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+
+# 菜单配置
+[[menu.main]]
+identifier = "basic"
+name = "前端基础"
+url = "/basic/"
+weight = 1
+
+[[menu.main]]
+identifier = "interview"
+name = "面试题合集"
+url = "/interview/"
+weight = 2
+
+[[menu.main]]
+identifier = "advanced"
+name = "静以修身"
+url = "/advanced/"
+weight = 3
+
+[[menu.main]]
+identifier = "others"
+name = "诗和远方"
+url = "/others/"
+weight = 4
+
+[[menu.main]]
+identifier = "github"
+name = "Github"
+url = "https://github.com/ChengXueqing"
+weight = 10
+
+# PaperMod 主题配置
+[params]
+env = "production"
+description = "心静人自静 神清天地归"
+keywords = ["技术", "博客", "前端"]
+author = "ChengXueqing"
+
+# 封面图片（用于首页）
+coverimage = "/images/photo.webp"
+
+# 链接打开方式
+linkToMarkdown = true
+linkToHugo = false
+
+# 评论（暂时禁用）
+comments = false
+
+# 搜索
+enableSearch = true
+searchResultsEmpty = "未找到结果"
+
+# 代码高亮
+highlightCode = true
+
+# 日期格式
+[frontmatter]
+date = ["date", "publishDate", "lastmod"]
+lastmod = ["lastmod", ":default"]
+
+# Permalinks（保持原有 URL 结构）
+[permalinks]
+basic = "/basic/:filename/"
+advanced = "/advanced/:filename/"
+interview = "/interview/:filename/"
+others = "/others/:filename/"
+engineering = "/engineering/:filename/"
