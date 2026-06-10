@@ -8,6 +8,7 @@
 
 import os
 import re
+import base64
 import hashlib
 import hmac
 import time
@@ -21,7 +22,8 @@ load_dotenv()
 
 import requests
 from fastapi import FastAPI, Request, HTTPException, Header, Depends
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import httpx
 
@@ -48,6 +50,12 @@ DEFAULT_CATEGORY = "basic"
 # ============== FastAPI 应用 ==============
 
 app = FastAPI(title="博客AI发布助手", version="1.0.0")
+
+# 挂载静态文件目录
+import pathlib
+STATIC_DIR = pathlib.Path(__file__).parent / "static"
+if STATIC_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 # ============== 企业微信验证 ==============
 
@@ -111,7 +119,7 @@ def generate_blog_content(topic: str, category: str = DEFAULT_CATEGORY) -> dict:
         "max_tokens": 2000
     }
 
-    with httpx.Client(timeout=60.0) as client:
+    with httpx.Client(timeout=120.0) as client:
         response = client.post(LLM_API_URL, headers=headers, json=payload)
 
     if response.status_code != 200:
@@ -153,73 +161,66 @@ draft: true
 
 def create_github_pr(title: str, content: str, filename: str, category: str) -> dict:
     """
-    创建 GitHub Pull Request
+    创建 GitHub Pull Request:
+    1. 从 master 创建新分支 ai/xxx
+    2. 在新分支上提交文件
+    3. 创建 PR: ai/xxx -> master
     """
     if not GITHUB_TOKEN:
         raise HTTPException(status_code=500, detail="GITHUB_TOKEN 未配置")
 
-    # 决定文件路径
     file_path = f"content/{category}/{filename}"
-
-    # 获取仓库信息
     repo_url = f"https://api.github.com/repos/{GITHUB_REPO}"
     headers = {
         "Authorization": f"token {GITHUB_TOKEN}",
         "Accept": "application/vnd.github.v3+json"
     }
 
-    # 检查文件是否已存在
-    file_url = f"{repo_url}/contents/{file_path}"
-    params = {"ref": GITHUB_BRANCH}
+    # 新分支名称（ai/slug-timestamp）
+    slug = re.sub(r'[^\w-]', '-', filename.replace('.md', ''))[:40]
+    branch_name = f"ai/{slug}-{int(time.time())}"
 
     with httpx.Client(timeout=30.0) as client:
-        # 尝试获取现有文件（用于更新场景）
-        existing = client.get(file_url, headers=headers, params=params)
-        sha = existing.json().get("sha") if existing.status_code == 200 else None
+        # 1. 获取 master 分支的最新 commit SHA
+        master_resp = client.get(f"{repo_url}/git/ref/heads/{GITHUB_BRANCH}", headers=headers)
+        if master_resp.status_code != 200:
+            raise HTTPException(status_code=500, detail=f"获取分支失败: {master_resp.text}")
+        master_sha = master_resp.json()["object"]["sha"]
 
-        # 创建新文件或更新
-        commit_message = f"AI生成文章: {title}"
+        # 2. 创建新分支
+        branch_resp = client.post(f"{repo_url}/git/refs", headers=headers, json={
+            "ref": f"refs/heads/{branch_name}",
+            "sha": master_sha
+        })
+        if branch_resp.status_code not in (200, 201):
+            raise HTTPException(status_code=500, detail=f"创建分支失败: {branch_resp.text}")
 
-        file_content = {
-            "message": commit_message,
-            "content": content.encode('utf-8').hex(),  # GitHub API 需要 hex 编码
-            "branch": GITHUB_BRANCH
-        }
-        if sha:
-            file_content["sha"] = sha
+        # 3. 在新分支上提交文件
+        file_url = f"{repo_url}/contents/{file_path}"
+        put_response = client.put(file_url, headers=headers, json={
+            "message": f"AI生成文章: {title}",
+            "content": base64.b64encode(content.encode('utf-8')).decode('ascii'),
+            "branch": branch_name
+        })
+        if put_response.status_code not in (200, 201):
+            raise HTTPException(status_code=500, detail=f"提交文件失败: {put_response.text}")
 
-        put_response = client.put(file_url, headers=headers, json=file_content)
-
-    if put_response.status_code not in (200, 201):
-        raise HTTPException(status_code=500, detail=f"GitHub API 调用失败: {put_response.text}")
-
-    result = put_response.json()
-
-    # 创建 PR（如果文件不存在或需要审核流程）
-    pr_title = f"📝 {title}"
-    pr_body = f"""## 博客文章草稿
+        # 4. 创建 PR
+        pr_body = f"""## 📝 博客文章草稿（AI生成）
 
 **主题**: {title}
 **分类**: {category}
 **生成时间**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
-### 文章预览
-请在 [文件列表](https://github.com/{GITHUB_REPO}/blob/{GITHUB_BRANCH}/{file_path}) 中查看完整内容。
-
 ---
-> 🤖 此 PR 由 AI 自动生成，请审核后合并发布。
+> 🤖 此 PR 由 AI 自动生成，请审核内容后合并发布到博客。
 """
-
-    pr_url = f"{repo_url}/pulls"
-    pr_data = {
-        "title": pr_title,
-        "body": pr_body,
-        "head": GITHUB_BRANCH,  # PR 从哪个分支
-        "base": GITHUB_BRANCH   # PR 合并到哪个分支
-    }
-
-    with httpx.Client(timeout=30.0) as client:
-        pr_response = client.post(pr_url, headers=headers, json=pr_data)
+        pr_response = client.post(f"{repo_url}/pulls", headers=headers, json={
+            "title": f"📝 {title}",
+            "body": pr_body,
+            "head": branch_name,
+            "base": GITHUB_BRANCH
+        })
 
     if pr_response.status_code == 201:
         pr_result = pr_response.json()
@@ -227,12 +228,8 @@ def create_github_pr(title: str, content: str, filename: str, category: str) -> 
             "status": "success",
             "pr_url": pr_result.get("html_url"),
             "pr_number": pr_result.get("number"),
-            "file_path": file_path
-        }
-    elif pr_response.status_code == 422:  # PR 已存在
-        return {
-            "status": "already_exists",
-            "message": "该文章已存在，请先删除或修改后再试"
+            "file_path": file_path,
+            "branch": branch_name
         }
     else:
         return {
@@ -260,7 +257,11 @@ def send_wecom_notification(message: str):
 
 @app.get("/")
 async def root():
-    return {"status": "ok", "service": "博客AI发布助手"}
+    """根路径重定向到 Web 界面"""
+    index_file = STATIC_DIR / "index.html"
+    if index_file.exists():
+        return FileResponse(str(index_file))
+    return {"status": "ok", "service": "博客AI发布助手", "ui": "/static/index.html"}
 
 @app.get("/health")
 async def health():
