@@ -8,13 +8,13 @@ defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 
 # 静态文件目录
-staticDir = ["static"]
+staticDir = "static"
 
 # 内容目录
-contentDir = ["content"]
+contentDir = "content"
 
 # 部署设置
-publishDir = ["public"]
+publishDir = "public"
 
 # 构建设置
 enableGitInfo = false
