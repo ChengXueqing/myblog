@@ -1,5 +1,6 @@
 ---
 
+
 title: "经典影视台词"
 date: 2022-07-13T22:56:30+08:00
 lastmod: 2022-07-13T22:56:30+08:00
@@ -10,8 +11,10 @@ description: "常用资源和工具的收藏整理"
 
 slug: "resource-collection"
 
-aliases: ["/others/resource-collection/"]
+aliases: ["/life/about-me/", "/life/resource-collection/"]
+
 ---
+
 # 经典影视台词
 
 ## 功夫熊猫

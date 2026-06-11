@@ -49,12 +49,6 @@ pygmentsCodeFencesGuessSyntax = true
   weight = 3
 
 [[menu.main]]
-  identifier = "life"
-  name = "生活记录"
-  url = "/life/"
-  weight = 4
-
-[[menu.main]]
   identifier = "archives"
   name = "归档"
   url = "/archives/"
@@ -111,4 +105,3 @@ pygmentsCodeFencesGuessSyntax = true
   dao = "/mind/dao/:slug/"
   poetry = "/mind/poetry/:slug/"
   reflection = "/mind/reflection/:slug/"
-  life = "/life/:slug/"
