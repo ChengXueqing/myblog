@@ -7,6 +7,8 @@ categories: [others]
 tags: []
 
 description: "个人博客搭建指南"
+
+slug: "blog-guide"
 ---
 # 个人博客 每日更新
 

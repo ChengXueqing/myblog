@@ -9,6 +9,8 @@ tags: []
 description: "对比 querySelector、querySelectorAll 和 jQuery find 方法的区别"
 
 summary: "对比 querySelector、querySelectorAll 和 jQuery find 方法的区别与用法"
+
+slug: "queryselector-vs-jquery-find"
 ---
 #### 以下三种写法结果一样
 - document.getElementById("test")  

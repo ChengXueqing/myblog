@@ -21,7 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -29,9 +28,18 @@ jobs:
         with:
           hugo-version: '0.146.0'
 
+      - name: Cache Hugo resources
+        uses: actions/cache@v4
+        with:
+          path: /tmp/hugo_cache
+          key: ${{ runner.os }}-hugo-${{ hashFiles('content/**/*.md') }}
+          restore-keys: |
+            ${{ runner.os }}-hugo-
+
       - name: Build
         run: |
-          hugo --minify --baseURL "https://chengxueqing.github.io/myblog/"
+          hugo --minify --baseURL "https://chengxueqing.github.io/myblog/" --cacheDir /tmp/hugo_cache
+          test -f public/index.html || exit 1
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

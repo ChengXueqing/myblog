@@ -7,6 +7,8 @@ categories: [others]
 tags: []
 
 description: "常用资源和工具的收藏整理"
+
+slug: "resource-collection"
 ---
 # 经典影视台词
 

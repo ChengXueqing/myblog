@@ -9,6 +9,8 @@ tags: []
 description: "JavaScript 中 unix 时间戳与日期格式的互相转换方法"
 
 summary: "JavaScript 中 unix 时间戳与日期格式的互相转换方法"
+
+slug: "unix-timestamp-conversion"
 ---
 #### 一、日期转时间戳
 ```

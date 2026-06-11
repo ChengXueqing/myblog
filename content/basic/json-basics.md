@@ -9,6 +9,8 @@ tags: []
 description: "探讨 JSON 中数组与对象的概念及用法"
 
 summary: "探讨 JSON 中数组与对象的概念及用法"
+
+slug: "json-basics"
 ---
 #### 一、数组
 *特征*：方括号［］，如：

@@ -7,6 +7,8 @@ categories: [others]
 tags: []
 
 description: "日常生活中的思考与感悟"
+
+slug: "life-reflections"
 ---
 # 唐诗 宋词
 

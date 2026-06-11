@@ -7,6 +7,8 @@ categories: [basic]
 tags: []
 
 description: "详解 DOM2 级事件的两个处理方法和事件流机制"
+
+slug: "js-event-flow"
 ---
 #### 一、定义
 DOM2级事件定义了两个事件处理方法：**addEventListener**(event, function, useCapture)和**removeEventListener**(event, function, useCapture)

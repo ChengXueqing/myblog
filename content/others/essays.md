@@ -7,6 +7,8 @@ categories: [others]
 tags: []
 
 description: "生活随笔与思考"
+
+slug: "essays"
 ---
 ## 解决 pip install 超时
 

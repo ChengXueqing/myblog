@@ -7,6 +7,8 @@ categories: [advanced]
 tags: []
 
 description: "Git Commit Message 的编写规范和最佳实践"
+
+slug: "git-commit-convention"
 ---
 # 道家八部金刚功
 

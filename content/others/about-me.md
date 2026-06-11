@@ -7,6 +7,8 @@ categories: [others]
 tags: []
 
 description: "个人简介与联系方式"
+
+slug: "about-me"
 ---
 # 室内香氛调节器
 

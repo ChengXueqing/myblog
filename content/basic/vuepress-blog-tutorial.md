@@ -4,6 +4,8 @@ date: 2018-04-10T18:00:00+08:00
 categories: [basic]
 tags: ['VuePress', '博客', '搭建教程']
 description: "从零开始使用 VuePress 搭建个人博客的完整教程"
+
+slug: "vuepress-blog-tutorial"
 ---
 # 手把手教你使用 VuePress 搭建个人博客
 

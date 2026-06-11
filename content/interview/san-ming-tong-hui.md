@@ -4,6 +4,8 @@ date: 2018-04-10T18:00:00+08:00
 categories: [interview]
 tags: ['命理', '传统文化', '古籍']
 description: "三命通会卷一：论五行生成"
+
+slug: "san-ming-tong-hui"
 ---
 # 三命通会
 

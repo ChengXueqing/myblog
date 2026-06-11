@@ -7,6 +7,8 @@ categories: [basic]
 tags: []
 
 description: "Git 常用命令速查与详解"
+
+slug: "git-commands"
 ---
 ## npm5.0新增package-lock.**json**文件挖的坑
 #### 一、从package.json说起

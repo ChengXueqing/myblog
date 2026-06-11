@@ -9,6 +9,8 @@ tags: []
 description: "Vue Router 中页面跳转传参的几种方式"
 
 summary: "Vue Router 中页面跳转传参的几种方式"
+
+slug: "vue-router-params"
 ---
 http://blog.csdn.net/qq_15646957/article/details/78070862
 

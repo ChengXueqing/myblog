@@ -4,6 +4,8 @@ date: 2018-04-10T18:00:00+08:00
 categories: [interview]
 tags: ['JavaScript', '面试', 'EventLoop', '垃圾回收']
 description: "JavaScript 基础面试题集合，涵盖垃圾回收、事件循环等核心知识点"
+
+slug: "js-interview-basics"
 ---
 # JavaScript 基础
 

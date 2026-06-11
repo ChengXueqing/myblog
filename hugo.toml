@@ -100,10 +100,10 @@ pygmentsCodeFencesGuessSyntax = true
     name = "github"
     url = "https://github.com/ChengXueqing"
 
-# Permalinks
+# Permalinks（语义化文件名，slug = 去掉扩展名的文件名）
 [permalinks]
-  basic = "/basic/:filename/"
-  advanced = "/advanced/:filename/"
-  interview = "/interview/:filename/"
-  others = "/others/:filename/"
-  engineering = "/engineering/:filename/"
+  basic = "/basic/:slug/"
+  advanced = "/advanced/:slug/"
+  interview = "/interview/:slug/"
+  others = "/others/:slug/"
+  engineering = "/engineering/:slug/"

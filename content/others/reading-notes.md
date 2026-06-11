@@ -7,6 +7,8 @@ categories: [others]
 tags: []
 
 description: "读书心得与笔记整理"
+
+slug: "reading-notes"
 ---
 # **秋题**
 
