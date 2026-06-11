@@ -1,12 +1,13 @@
 ---
+
 title: "Git Commit 代码提交规范"
 date: 2018-04-10T18:06:22+08:00
 lastmod: 2018-04-10T18:06:22+08:00
 categories: [engineering]
 tags: []
+
+description: "Git Commit Message 规范化实践"
 ---
-
-
 ## 一、Git commit 规范
 团队合作的时候，经常会碰到各种随意的 commit message：
 

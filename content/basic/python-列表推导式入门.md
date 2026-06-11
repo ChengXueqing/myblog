@@ -1,12 +1,14 @@
 ---
+
 title: "Python 列表推导式入门"
 date: 2026-06-11T08:30:42+08:00
 lastmod: 2026-06-11T08:30:42+08:00
 categories: [basic]
 tags: []
 draft: true
----
 
+description: "Python 列表推导式的基础用法和常见场景"
+---
 列表推导式（List Comprehension）是 Python 中一种简洁高效的创建列表的方法。它可以用一行代码替代传统的多行循环语句，让你的代码更加 Pythonic。本文将深入介绍列表推导式的语法、常见用法以及一些高级技巧。
 
 ## 什么是列表推导式

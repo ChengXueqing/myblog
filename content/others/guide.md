@@ -1,12 +1,13 @@
 ---
+
 title: "个人博客"
 date: 
 lastmod: 
 categories: [others]
 tags: []
+
+description: "个人博客搭建指南"
 ---
-
-
 # 个人博客 每日更新
 
 ::: tip 提示
