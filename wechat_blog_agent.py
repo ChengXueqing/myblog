@@ -1,6 +1,6 @@
 """
-企业微信群机器人 webhook 接收服务
-接收消息 → AI生成博客内容 → 自动创建 GitHub PR
+企业微信群机器人 + 博客 AI 发布助手
+接收消息 → AI生成博客内容 → 自动创建 Gitee PR
 
 依赖: pip install -r requirements.txt
 运行: python wechat_blog_agent.py
@@ -14,7 +14,7 @@ import hmac
 import time
 import json
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
 # 加载 .env 环境变量
 from dotenv import load_dotenv
@@ -31,17 +31,18 @@ import httpx
 
 # 企业微信群机器人配置
 WECOM_BOT_SECRET = os.getenv("WECOM_BOT_SECRET", "")  # 机器人密钥
-WECOM_BOT_WEBHOOK = os.getenv("WECOM_BOT_WEBHOOK", "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_KEY_HERE")
+WECOM_BOT_WEBHOOK = os.getenv("WECOM_BOT_WEBHOOK", "")
 
-# LLM API 配置 (DeepSeek / 硅基流动)
-LLM_API_URL = os.getenv("LLM_API_URL", "https://api.deepseek.com/v1/chat/completions")
+# LLM API 配置 (硅基流动 / DeepSeek)
+LLM_API_URL = os.getenv("LLM_API_URL", "https://api.siliconflow.cn/v1/chat/completions")
 LLM_API_KEY = os.getenv("LLM_API_KEY", "")
-LLM_MODEL = os.getenv("LLM_MODEL", "deepseek-chat")
+LLM_MODEL = os.getenv("LLM_MODEL", "deepseek-ai/DeepSeek-V3")
 
-# GitHub 配置
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
-GITHUB_REPO = os.getenv("GITHUB_REPO", "ChengXueqing/myblog")  # 博客仓库
-GITHUB_BRANCH = os.getenv("GITHUB_BRANCH", "master")
+# Gitee 配置
+GITEE_TOKEN = os.getenv("GITEE_TOKEN", "")
+GITEE_REPO = os.getenv("GITEE_REPO", "chengxueqing/myblog")  # 格式: owner/repo
+GITEE_BRANCH = os.getenv("GITEE_BRANCH", "master")
+GITEE_API_BASE = "https://gitee.com/api/v5"
 
 # Hugo 内容配置
 CONTENT_CATEGORIES = ["basic", "advanced", "interview", "others", "engineering"]
@@ -78,8 +79,6 @@ class BlogRequest(BaseModel):
     """博客生成请求"""
     topic: str
     category: str = DEFAULT_CATEGORY
-    tags: list = []
-    auto_publish: bool = False  # 是否自动发布（不走PR审核）
 
 # ============== LLM 调用 ==============
 
@@ -157,53 +156,62 @@ draft: true
         "category": category
     }
 
-# ============== GitHub API ==============
+# ============== Gitee API ==============
 
-def create_github_pr(title: str, content: str, filename: str, category: str) -> dict:
+def create_gitee_pr(title: str, content: str, filename: str, category: str) -> dict:
     """
-    创建 GitHub Pull Request:
-    1. 从 master 创建新分支 ai/xxx
-    2. 在新分支上提交文件
-    3. 创建 PR: ai/xxx -> master
+    创建 Gitee Pull Request:
+    1. 从 master 获取最新 commit SHA
+    2. 创建新分支 ai/xxx
+    3. 在新分支上提交文件
+    4. 创建 PR: ai/xxx -> master
     """
-    if not GITHUB_TOKEN:
-        raise HTTPException(status_code=500, detail="GITHUB_TOKEN 未配置")
+    if not GITEE_TOKEN:
+        raise HTTPException(status_code=500, detail="GITEE_TOKEN 未配置")
 
     file_path = f"content/{category}/{filename}"
-    repo_url = f"https://api.github.com/repos/{GITHUB_REPO}"
-    headers = {
-        "Authorization": f"token {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github.v3+json"
-    }
+    owner, repo = GITEE_REPO.split('/', 1)
+    base_url = f"{GITEE_API_BASE}/repos/{owner}/{repo}"
+    auth_params = {"access_token": GITEE_TOKEN}
 
     # 新分支名称（ai/slug-timestamp）
-    slug = re.sub(r'[^\w-]', '-', filename.replace('.md', ''))[:40]
+    slug = re.sub(r'[^\w\u4e00-\u9fa5-]', '-', filename.replace('.md', ''))[:25]
     branch_name = f"ai/{slug}-{int(time.time())}"
 
     with httpx.Client(timeout=30.0) as client:
-        # 1. 获取 master 分支的最新 commit SHA
-        master_resp = client.get(f"{repo_url}/git/ref/heads/{GITHUB_BRANCH}", headers=headers)
-        if master_resp.status_code != 200:
-            raise HTTPException(status_code=500, detail=f"获取分支失败: {master_resp.text}")
-        master_sha = master_resp.json()["object"]["sha"]
+        # 1. 获取 master 分支最新 commit SHA
+        branch_resp = client.get(
+            f"{base_url}/branches/{GITEE_BRANCH}",
+            params=auth_params
+        )
+        if branch_resp.status_code != 200:
+            raise HTTPException(status_code=500, detail=f"获取分支失败: {branch_resp.text[:200]}")
+        master_sha = branch_resp.json()["commit"]["sha"]
 
         # 2. 创建新分支
-        branch_resp = client.post(f"{repo_url}/git/refs", headers=headers, json={
-            "ref": f"refs/heads/{branch_name}",
-            "sha": master_sha
-        })
-        if branch_resp.status_code not in (200, 201):
-            raise HTTPException(status_code=500, detail=f"创建分支失败: {branch_resp.text}")
+        # Gitee API: POST /repos/{owner}/{repo}/branches
+        # Body: branch_name, refs (commit SHA)
+        new_branch_resp = client.post(
+            f"{base_url}/branches",
+            params=auth_params,
+            json={"branch_name": branch_name, "refs": master_sha}
+        )
+        if new_branch_resp.status_code not in (200, 201):
+            raise HTTPException(status_code=500, detail=f"创建分支失败: {new_branch_resp.text[:200]}")
 
         # 3. 在新分支上提交文件
-        file_url = f"{repo_url}/contents/{file_path}"
-        put_response = client.put(file_url, headers=headers, json={
-            "message": f"AI生成文章: {title}",
-            "content": base64.b64encode(content.encode('utf-8')).decode('ascii'),
-            "branch": branch_name
-        })
-        if put_response.status_code not in (200, 201):
-            raise HTTPException(status_code=500, detail=f"提交文件失败: {put_response.text}")
+        file_resp = client.post(
+            f"{base_url}/contents/{file_path}",
+            params=auth_params,
+            json={
+                "branch": branch_name,
+                "message": f"AI生成文章: {title}",
+                "content": base64.b64encode(content.encode('utf-8')).decode('ascii'),
+                "encoding": "base64"
+            }
+        )
+        if file_resp.status_code not in (200, 201):
+            raise HTTPException(status_code=500, detail=f"提交文件失败: {file_resp.text[:300]}")
 
         # 4. 创建 PR
         pr_body = f"""## 📝 博客文章草稿（AI生成）
@@ -215,26 +223,32 @@ def create_github_pr(title: str, content: str, filename: str, category: str) -> 
 ---
 > 🤖 此 PR 由 AI 自动生成，请审核内容后合并发布到博客。
 """
-        pr_response = client.post(f"{repo_url}/pulls", headers=headers, json={
-            "title": f"📝 {title}",
-            "body": pr_body,
-            "head": branch_name,
-            "base": GITHUB_BRANCH
-        })
+        pr_resp = client.post(
+            f"{base_url}/pulls",
+            params=auth_params,
+            json={
+                "title": f"📝 {title}",
+                "body": pr_body,
+                "head": branch_name,
+                "base": GITEE_BRANCH,
+            }
+        )
 
-    if pr_response.status_code == 201:
-        pr_result = pr_response.json()
+    if pr_resp.status_code in (200, 201):
+        pr_result = pr_resp.json()
+        pr_number = pr_result.get("number") or pr_result.get("iid")
+        pr_url = f"https://gitee.com/{GITEE_REPO}/pulls/{pr_number}" if pr_number else f"https://gitee.com/{GITEE_REPO}/pulls"
         return {
             "status": "success",
-            "pr_url": pr_result.get("html_url"),
-            "pr_number": pr_result.get("number"),
+            "pr_url": pr_url,
+            "pr_number": pr_number,
             "file_path": file_path,
             "branch": branch_name
         }
     else:
         return {
             "status": "pr_failed",
-            "detail": pr_response.text
+            "detail": pr_resp.text[:300]
         }
 
 # ============== 企业微信消息处理 ==============
@@ -311,7 +325,7 @@ async def wechat_webhook(request: Request):
         result = generate_blog_content(topic)
 
         # 创建 GitHub PR
-        pr_result = create_github_pr(
+        pr_result = create_gitee_pr(
             title=result["title"],
             content=result["content"],
             filename=result["filename"],
@@ -325,7 +339,7 @@ async def wechat_webhook(request: Request):
 **文件**: `content/{result['category']}/{result['filename']}`
 **PR链接**: {pr_result['pr_url']}
 
-请审核后合并到 master 分支，GitHub Actions 将自动构建发布到博客。"""
+请审核后合并到 master 分支，Gitee Pages 将自动构建发布到博客。"""
         else:
             response_msg = f"""⚠️ 文章生成完成但 PR 创建失败：
 
@@ -361,7 +375,7 @@ async def generate_blog(req: BlogRequest):
             # 直接提交到 master（跳过 PR）
             pass  # 暂不实现自动发布
 
-        pr_result = create_github_pr(
+        pr_result = create_gitee_pr(
             title=result["title"],
             content=result["content"],
             filename=result["filename"],
