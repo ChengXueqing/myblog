@@ -3,96 +3,107 @@ languageCode = "zh-cn"
 title = "清净心"
 theme = "PaperMod"
 defaultContentLanguage = "zh-cn"
-
-# 启用中文搜索
 hasCJKLanguage = true
+copyright = "© 2018-2026 清净心"
 
-# 允许 HTML 原始标签（解决 Raw HTML omitted 警告）
+# 允许 HTML 原始标签
 [markup.goldmark.renderer]
   unsafe = true
-
-# 静态文件目录
-staticDir = "static"
-
-# 内容目录
-contentDir = "content"
-
-# 部署设置
-publishDir = "public"
 
 # 构建设置
 enableGitInfo = false
 enableEmoji = true
+enableRobotsTXT = true
 
-# 代码高亮
-pygmentsStyle = "dracula"
+# 代码高亮（PaperMod 自带样式，无需指定 pygmentsStyle）
 pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 
+# 输出格式（RSS + JSON 用于搜索）
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Sitemap
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
 # 菜单配置
 [[menu.main]]
-identifier = "basic"
-name = "前端基础"
-url = "/basic/"
-weight = 1
+  identifier = "basic"
+  name = "前端基础"
+  url = "/basic/"
+  weight = 1
 
 [[menu.main]]
-identifier = "interview"
-name = "面试题合集"
-url = "/interview/"
-weight = 2
+  identifier = "interview"
+  name = "面试题合集"
+  url = "/interview/"
+  weight = 2
 
 [[menu.main]]
-identifier = "advanced"
-name = "静以修身"
-url = "/advanced/"
-weight = 3
+  identifier = "advanced"
+  name = "静以修身"
+  url = "/advanced/"
+  weight = 3
 
 [[menu.main]]
-identifier = "others"
-name = "诗和远方"
-url = "/others/"
-weight = 4
+  identifier = "others"
+  name = "诗和远方"
+  url = "/others/"
+  weight = 4
 
 [[menu.main]]
-identifier = "github"
-name = "Github"
-url = "https://github.com/ChengXueqing"
-weight = 10
+  identifier = "archives"
+  name = "归档"
+  url = "/archives/"
+  weight = 5
+
+[[menu.main]]
+  identifier = "search"
+  name = "搜索"
+  url = "/search/"
+  weight = 6
+
+[[menu.main]]
+  identifier = "github"
+  name = "Github"
+  url = "https://github.com/ChengXueqing"
+  weight = 10
 
 # PaperMod 主题配置
 [params]
-env = "production"
-description = "心静人自静 神清天地归"
-keywords = ["技术", "博客", "前端"]
-author = "ChengXueqing"
+  env = "production"
+  description = "心静人自静 神清天地归"
+  keywords = ["技术", "博客", "前端"]
+  author = "ChengXueqing"
 
-# 封面图片（用于首页）
-coverimage = "/images/photo.webp"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowToc = true
+  TocSide = "right"
+  ShowPostNavLinks = true
+  ShowRssButtonInSectionTermList = true
 
-# 链接打开方式
-linkToMarkdown = true
-linkToHugo = false
+  # 首页个人信息
+  [params.homeInfoParams]
+    Title = "清净心"
+    Content = "心静人自静，神清天地归"
 
-# 评论（暂时禁用）
-comments = false
+  # 社交图标
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/ChengXueqing"
 
-# 搜索
-enableSearch = true
-searchResultsEmpty = "未找到结果"
-
-# 代码高亮
-highlightCode = true
-
-# 日期格式
-[frontmatter]
-date = ["date", "publishDate", "lastmod"]
-lastmod = ["lastmod", ":default"]
-
-# Permalinks（保持原有 URL 结构）
+# Permalinks
 [permalinks]
-basic = "/basic/:filename/"
-advanced = "/advanced/:filename/"
-interview = "/interview/:filename/"
-others = "/others/:filename/"
-engineering = "/engineering/:filename/"
+  basic = "/basic/:filename/"
+  advanced = "/advanced/:filename/"
+  interview = "/interview/:filename/"
+  others = "/others/:filename/"
+  engineering = "/engineering/:filename/"
