@@ -19,7 +19,6 @@ publishDir = ["public"]
 # 构建设置
 enableGitInfo = false
 enableEmoji = true
-hasCJKLanguage = true
 
 # 代码高亮
 pygmentsStyle = "dracula"
