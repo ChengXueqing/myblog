@@ -6,6 +6,8 @@ tags: ['Vue', 'Diff算法', '虚拟DOM', '性能优化']
 description: "深入理解 Vue 的 Diff 算法原理，虚拟 DOM 如何高效更新"
 
 slug: "vue-diff-algorithm"
+
+aliases: ["/basic/vue-diff-algorithm/"]
 ---
 # Vue Diff 算法详解
 

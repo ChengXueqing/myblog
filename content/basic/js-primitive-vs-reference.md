@@ -9,6 +9,8 @@ tags: []
 description: "深入理解 ECMAScript 中基本类型值和引用类型值在保存方式和复制方式上的区别"
 
 slug: "js-primitive-vs-reference"
+
+aliases: ["/basic/js-primitive-vs-reference/"]
 ---
 ECMAScript中，变量分为**基本类型值**和**引用类型值**，两者的区别如下：
 

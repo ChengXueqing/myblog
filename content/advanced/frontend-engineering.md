@@ -9,6 +9,8 @@ tags: []
 description: "前端工程化实践中的工具链和规范化方案"
 
 slug: "frontend-engineering"
+
+aliases: ["/advanced/frontend-engineering/"]
 ---
 # 道家长寿功
 

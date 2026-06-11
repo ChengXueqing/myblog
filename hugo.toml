@@ -31,27 +31,27 @@ pygmentsCodeFencesGuessSyntax = true
 
 # 菜单配置
 [[menu.main]]
-  identifier = "basic"
-  name = "前端基础"
-  url = "/basic/"
+  identifier = "tech"
+  name = "技术积累"
+  url = "/tech/"
   weight = 1
 
 [[menu.main]]
-  identifier = "interview"
-  name = "面试题合集"
-  url = "/interview/"
+  identifier = "ai"
+  name = "AI 全栈 ⭐"
+  url = "/tech/ai/"
   weight = 2
 
 [[menu.main]]
-  identifier = "advanced"
-  name = "静以修身"
-  url = "/advanced/"
+  identifier = "mind"
+  name = "心法修养"
+  url = "/mind/"
   weight = 3
 
 [[menu.main]]
-  identifier = "others"
-  name = "诗和远方"
-  url = "/others/"
+  identifier = "life"
+  name = "生活记录"
+  url = "/life/"
   weight = 4
 
 [[menu.main]]
@@ -100,10 +100,15 @@ pygmentsCodeFencesGuessSyntax = true
     name = "github"
     url = "https://github.com/ChengXueqing"
 
-# Permalinks（语义化文件名，slug = 去掉扩展名的文件名）
+# Permalinks
 [permalinks]
-  basic = "/basic/:slug/"
-  advanced = "/advanced/:slug/"
-  interview = "/interview/:slug/"
-  others = "/others/:slug/"
-  engineering = "/engineering/:slug/"
+  tech = "/tech/:slug/"
+  frontend = "/tech/frontend/:slug/"
+  interview = "/tech/interview/:slug/"
+  engineering = "/tech/engineering/:slug/"
+  ai = "/tech/ai/:slug/"
+  mind = "/mind/:slug/"
+  dao = "/mind/dao/:slug/"
+  poetry = "/mind/poetry/:slug/"
+  reflection = "/mind/reflection/:slug/"
+  life = "/life/:slug/"

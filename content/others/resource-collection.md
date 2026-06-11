@@ -9,6 +9,8 @@ tags: []
 description: "常用资源和工具的收藏整理"
 
 slug: "resource-collection"
+
+aliases: ["/others/resource-collection/"]
 ---
 # 经典影视台词
 

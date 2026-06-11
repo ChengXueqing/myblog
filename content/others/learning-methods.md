@@ -9,6 +9,8 @@ tags: []
 description: "高效学习方法的总结与实践"
 
 slug: "learning-methods"
+
+aliases: ["/others/learning-methods/"]
 ---
 # 某些观念or言论
 

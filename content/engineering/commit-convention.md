@@ -9,6 +9,8 @@ tags: []
 description: "Git Commit Message 规范化实践"
 
 slug: "commit-convention"
+
+aliases: ["/engineering/commit-convention/"]
 ---
 ## 一、Git commit 规范
 团队合作的时候，经常会碰到各种随意的 commit message：

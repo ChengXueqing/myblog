@@ -9,6 +9,8 @@ tags: []
 description: "旅行记录与见闻"
 
 slug: "travel-journal"
+
+aliases: ["/others/travel-journal/"]
 ---
 ## 前赤壁赋
 

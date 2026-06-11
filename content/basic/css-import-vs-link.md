@@ -9,6 +9,8 @@ tags: []
 description: "介绍 CSS 的三种引入方式，对比 @import 和 link 的区别"
 
 slug: "css-import-vs-link"
+
+aliases: ["/basic/css-import-vs-link/"]
 ---
 css的引入方式共三种及@import和link的区别
 #### 一、 行内样式

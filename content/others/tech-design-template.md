@@ -6,6 +6,8 @@ tags: ['技术方案', '模板', '工程化']
 description: "技术方案设计的标准模板与框架"
 
 slug: "tech-design-template"
+
+aliases: ["/others/tech-design-template/"]
 ---
 # 技术方案设计
 

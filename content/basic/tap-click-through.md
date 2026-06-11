@@ -9,6 +9,8 @@ tags: []
 description: "分析 zepto 的 tap 事件点透问题，探讨原因和解决方案"
 
 slug: "tap-click-through"
+
+aliases: ["/basic/tap-click-through/"]
 ---
 zepto的tap事件点透问题分析：
 #### 一、点透是什么

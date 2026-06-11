@@ -9,6 +9,8 @@ tags: []
 description: "探讨 MVC 框架中表现与数据分离的概念和实践"
 
 slug: "mvc-data-separation"
+
+aliases: ["/basic/mvc-data-separation/"]
 ---
 ##### 表现与数据分离是MVC框架的概念
 MVC框架即 Modal-View-Controller, 用一种业务逻辑、数据、界面显示分离的方法，在改变界面和交互时不需要重写业务逻辑。

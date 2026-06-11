@@ -6,6 +6,8 @@ tags: ['JavaScript', '面试', 'EventLoop', '垃圾回收']
 description: "JavaScript 基础面试题集合，涵盖垃圾回收、事件循环等核心知识点"
 
 slug: "js-interview-basics"
+
+aliases: ["/interview/js-interview-basics/"]
 ---
 # JavaScript 基础
 
