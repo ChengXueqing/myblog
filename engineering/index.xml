@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>规范化 on 清净心</title><link>https://chengxueqing.github.io/myblog/engineering/</link><description>Recent content in 规范化 on 清净心</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Tue, 10 Apr 2018 18:06:22 +0800</lastBuildDate><atom:link href="https://chengxueqing.github.io/myblog/engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Git Commit 代码提交规范</title><link>https://chengxueqing.github.io/myblog/engineering/commit/</link><pubDate>Tue, 10 Apr 2018 18:06:22 +0800</pubDate><guid>https://chengxueqing.github.io/myblog/engineering/commit/</guid><description>&lt;h2 id="一git-commit-规范">一、Git commit 规范&lt;/h2>
+&lt;p>团队合作的时候，经常会碰到各种随意的 commit message：&lt;/p>
+&lt;p>&lt;img loading="lazy" src="https://chengxueqing.github.io/myblog/images/engineering/demo.jpeg">&lt;/p>
+&lt;p>统一 commit message 的好处：&lt;/p>
+&lt;ul>
+&lt;li>可读性好，方便快速浏览，方便 Code Review&lt;/li>
+&lt;li>提高项目的整体质量&lt;/li>
+&lt;/ul>
+&lt;p>业内规范：&lt;/p>
+&lt;p>Angular commit message规范 由 Google 推出的一套提交消息规范标准，也是目前使用范围最广的规范，前前端框架 Angular.js 采用的就是该规范。&lt;/p></description></item></channel></rss>
