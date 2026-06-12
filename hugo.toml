@@ -49,16 +49,10 @@ pygmentsCodeFencesGuessSyntax = true
   weight = 8
 
 [[menu.main]]
-  identifier = "archives"
-  name = "归档"
-  url = "/archives/"
-  weight = 5
-
-[[menu.main]]
   identifier = "search"
   name = "搜索"
   url = "/search/"
-  weight = 6
+  weight = 5
 
 [[menu.main]]
   identifier = "github"
