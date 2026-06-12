@@ -46,7 +46,7 @@ pygmentsCodeFencesGuessSyntax = true
   identifier = "mind"
   name = "心法修养"
   url = "/mind/"
-  weight = 3
+  weight = 8
 
 [[menu.main]]
   identifier = "archives"
@@ -87,7 +87,7 @@ pygmentsCodeFencesGuessSyntax = true
   # 首页个人信息
   [params.homeInfoParams]
     Title = "清净心"
-    Content = "心静人自静，神清天地归"
+    Content = "一个简单的技术博客"
 
   # 社交图标
   [[params.socialIcons]]
