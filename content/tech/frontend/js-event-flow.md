@@ -22,7 +22,7 @@ DOM2级事件定义了两个事件处理方法：**addEventListener**(event, fun
 
 **w3c模型将两者中和，事件流包括三个阶段：事件捕获阶段 -->处于目标阶段 -->事件冒泡阶段**
 
-![image 100*100](/images/basic/event-flow.jpg)
+![image 100*100](/myblog/images/basic/event-flow.jpg)
 #### 三、实例
 当事件处于目标阶段时，事件调用顺序决定与书写顺序，demo如下
 `<html>`

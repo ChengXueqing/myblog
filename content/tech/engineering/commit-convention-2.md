@@ -13,7 +13,7 @@ slug: "commit-convention"
 ## 一、Git commit 规范
 团队合作的时候，经常会碰到各种随意的 commit message：
 
-![](/images/engineering/demo.jpeg)
+![](/myblog/images/engineering/demo.jpeg)
 
 统一 commit message 的好处：
 - 可读性好，方便快速浏览，方便 Code Review
@@ -114,6 +114,6 @@ module.exports = {
 
 配置完成，可以试一下提交了，
 
-![](/images/engineering/example.png)
+![](/myblog/images/engineering/example.png)
 
 如上图所示，commit 信息是 updateadf，不符合我们的规范，就会报错。

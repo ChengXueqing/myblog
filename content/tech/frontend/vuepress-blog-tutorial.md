@@ -239,11 +239,11 @@ USERNAME 必须是你 Github 的账号名称，不是你的名字拼音，也不
 
 例如我的 Github 账号名称是 zhangyunchencc
 
-![](/images/eg13.png)
+![](/myblog/images/eg13.png)
 
 那么新建仓库，Repository name 就填写为：zhangyunchencc.github.io
 
-![](/images/eg14.png)
+![](/myblog/images/eg14.png)
 
 **这个仓库建好后，不用克隆到本地，内容更新修改都在下面的仓库中进行。**
 
@@ -310,15 +310,15 @@ git push -f git@github.com:zhangyunchencc/zhangyunchencc.github.io.git master
 
 此时打开 Github Settings 中下面的链接: [https://zhangyunchencc.github.io/](https://zhangyunchencc.github.io/) 即可看到自己的主页啦~
 
-![](/images/eg2.png)
+![](/myblog/images/eg2.png)
 
 #### PC 端页面是这样的：
 
-![](/images/eg3.png)
+![](/myblog/images/eg3.png)
 
 #### 手机端页面是这样的：
 
-![](/images/eg4.png)
+![](/myblog/images/eg4.png)
 
 ## 六、发布到自己的个人域名
 
@@ -333,9 +333,9 @@ git push -f git@github.com:zhangyunchencc/zhangyunchencc.github.io.git master
 我是在新网购买的，下面以新网为例，万网是类似的。
 
 购买完成后进入管理后台，点击 ”解析“ 按钮，添加下面两条内容：
-![](/images/eg5.png)
+![](/myblog/images/eg5.png)
 
-![](/images/eg6.png)
+![](/myblog/images/eg6.png)
 
 注意这里有坑！！！在 万网 购买域名的同学请注意，第二条记录中的 _ 请用 @ 代替，万网不支持 _
 
@@ -347,7 +347,7 @@ git push -f git@github.com:zhangyunchencc/zhangyunchencc.github.io.git master
 
 在仓库一 USERNAME.github.io 中找到 Settings > Custom domain 把 www.zhangyunchen.cc 添加进去即可。
 
-![](/images/eg8.png)
+![](/myblog/images/eg8.png)
 
 ### :clap: 大功告成，打开 [https://www.zhangyunchen.cc](https://www.zhangyunchen.cc) 看一下吧~~~
 

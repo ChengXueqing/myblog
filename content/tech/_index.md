@@ -12,19 +12,13 @@ description: "前端开发、工程化、面试准备、AI 全栈开发的技术
 <div class="submodules">
 
 ### 📚 前端开发
-[进入前端开发 →](/tech/frontend/)  
+[进入前端开发 →](/myblog/tech/frontend/)  
 Vue、React、JavaScript、CSS 等前端技术（15 篇文章）
 
 ### 🔧 工程化
-[进入工程化 →](/tech/engineering/)  
-构建工具、代码规范、Git 工作流、自动化部署（5 篇文章）
-
-### 💼 面试准备
-[进入面试准备 →](/tech/interview/)  
-前端面试知识点、算法题解、面试经验（5 篇文章）
-
-### 🤖 AI 全栈
-[进入 AI 全栈 →](/tech/ai/)  
+[进入工程化 →](/myblog/tech/engineering/)
+[进入面试准备 →](/myblog/tech/interview/)
+[进入 AI 全栈 →](/myblog/tech/ai/)  
 AI 辅助开发、全栈项目实战、最新技术探索（2 篇文章）
 
 </div>

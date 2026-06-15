@@ -12,19 +12,10 @@ description: "中医学习、诗词欣赏、生活感悟与思考记录"
 <div class="submodules">
 
 ### ☯️ 道法自然
-[进入道法自然 →](/mind/dao/)  
-中医理论、养生智慧、传统文化（2 篇文章）
-
-### 📜 诗词欣赏
-[进入诗词欣赏 →](/mind/poetry/)  
-古典诗词、现代诗歌、文学赏析（2 篇文章）
-
-### 🔮 易经
-[进入易经 →](/mind/yijing/)  
-六十四卦符号、卦名、卦辞（64 卦索引）
-
-### 💭 反思总结
-[进入反思总结 →](/mind/reflection/)  
+[进入道法自然 →](/myblog/mind/dao/)
+[进入诗词欣赏 →](/myblog/mind/poetry/)
+[进入易经 →](/myblog/mind/yijing/)
+[进入反思总结 →](/myblog/mind/reflection/)  
 生活感悟、成长记录、复盘思考（4 篇文章）
 
 </div>
