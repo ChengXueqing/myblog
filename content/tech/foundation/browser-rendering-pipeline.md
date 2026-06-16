@@ -17,20 +17,17 @@ slug: "browser-rendering-pipeline"
 
 ## 管线全景
 
-```
-HTML/CSS/JS
-     ↓
-【1. 解析】HTML → DOM，CSS → CSSOM
-     ↓
-【2. 构建渲染树】DOM + CSSOM → Render Tree
-     ↓
-【3. 布局（Layout）】每个元素在哪、多大
-     ↓
-【4. 绘制（Paint）】填充像素（但不显示）
-     ↓
-【5. 合成（Compositing）】交给 GPU 合成图层
-     ↓
-【6. 显示】像素上屏
+```mermaid
+flowchart TD
+    A[HTML/CSS/JS] --> B[1. 解析<br/>HTML→DOM, CSS→CSSOM]
+    B --> C[2. 构建渲染树<br/>DOM + CSSOM → Render Tree]
+    C --> D[3. 布局 Layout<br/>每个元素在哪、多大]
+    D --> E[4. 绘制 Paint<br/>填充像素]
+    E --> F[5. 合成 Compositing<br/>交给 GPU 合成图层]
+    F --> G[6. 显示<br/>像素上屏]
+    
+    style A fill:#f9f,stroke:#333
+    style G fill:#9f9,stroke:#333
 ```
 
 **关键认知**：每一步都可能触发**重做后面所有步骤**。性能优化的本质就是**减少管线被重新执行的次数**。
