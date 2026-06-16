@@ -49,10 +49,16 @@ pygmentsCodeFencesGuessSyntax = true
   weight = 8
 
 [[menu.main]]
+  identifier = "tags"
+  name = "标签"
+  url = "/tags/"
+  weight = 5
+
+[[menu.main]]
   identifier = "search"
   name = "搜索"
   url = "/search/"
-  weight = 5
+  weight = 6
 
 [[menu.main]]
   identifier = "github"
@@ -78,6 +84,12 @@ pygmentsCodeFencesGuessSyntax = true
   ShowPostNavLinks = true
   ShowRssButtonInSectionTermList = true
 
+  # 搜索配置（Fuse.js 参数，优化中文搜索）
+  [params.fuseOpts]
+    threshold = 0.1
+    ignoreLocation = true
+    minMatchCharLength = 1
+
   # 首页个人信息
   [params.homeInfoParams]
     Title = "清净心"
@@ -100,3 +112,8 @@ pygmentsCodeFencesGuessSyntax = true
   dao = "/mind/dao/:slug/"
   poetry = "/mind/poetry/:slug/"
   reflection = "/mind/reflection/:slug/"
+
+# Taxonomies（标签 + 系列）
+[taxonomies]
+  tag = "tags"
+  series = "series"
