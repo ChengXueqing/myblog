@@ -91,6 +91,7 @@ pygmentsCodeFencesGuessSyntax = true
 # Permalinks
 [permalinks]
   tech = "/tech/:slug/"
+  basics = "/tech/basics/:slug/"
   frontend = "/tech/frontend/:slug/"
   interview = "/tech/interview/:slug/"
   engineering = "/tech/engineering/:slug/"

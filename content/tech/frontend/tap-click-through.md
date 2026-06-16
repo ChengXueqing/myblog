@@ -3,7 +3,7 @@
 title: "前端开发之tap点透浅谈"
 date: 2018-04-10T18:31:38+08:00
 lastmod: 2018-04-10T18:31:38+08:00
-categories: [basic]
+categories: [frontend]
 tags: []
 
 description: "分析 zepto 的 tap 事件点透问题，探讨原因和解决方案"

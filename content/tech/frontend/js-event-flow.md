@@ -3,7 +3,7 @@
 title: "Javascript事件流"
 date: 2018-04-10T18:10:38+08:00
 lastmod: 2018-04-10T18:10:38+08:00
-categories: [basic]
+categories: [frontend]
 tags: []
 
 description: "详解 DOM2 级事件的两个处理方法和事件流机制"

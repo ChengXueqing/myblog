@@ -3,7 +3,7 @@
 title: "css的引入方式共三种及@import和link的区别"
 date: 2018-04-09T20:25:51+08:00
 lastmod: 2018-04-09T20:25:51+08:00
-categories: [basic]
+categories: [frontend]
 tags: []
 
 description: "介绍 CSS 的三种引入方式，对比 @import 和 link 的区别"

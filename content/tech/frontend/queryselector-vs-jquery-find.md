@@ -3,7 +3,7 @@
 title: "querySelector和querySelectorAll以及$(query).find()的区别"
 date: 2018-04-10T18:06:22+08:00
 lastmod: 2018-04-10T18:06:22+08:00
-categories: [basic]
+categories: [frontend]
 tags: []
 
 description: "对比 querySelector、querySelectorAll 和 jQuery find 方法的区别"

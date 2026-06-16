@@ -3,7 +3,7 @@
 title: "vue router跳转传参"
 date: 2018-03-13T14:07:36+08:00
 lastmod: 2018-03-13T14:07:36+08:00
-categories: [basic]
+categories: [frontend]
 tags: []
 
 description: "Vue Router 中页面跳转传参的几种方式"

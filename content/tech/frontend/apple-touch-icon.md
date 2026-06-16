@@ -3,7 +3,7 @@
 title: "关于Apple设备私有的apple-touch-icon属性详解"
 date: 2018-04-10T18:04:55+08:00
 lastmod: 2018-04-10T18:04:55+08:00
-categories: [basic]
+categories: [frontend]
 tags: []
 
 description: "详解 Apple 设备的 apple-touch-icon 私有属性，用于在 iOS 设备上将网站添加到主屏幕时显示图标"

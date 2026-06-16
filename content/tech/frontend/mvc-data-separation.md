@@ -3,7 +3,7 @@
 title: "表现与数据分离"
 date: 2018-04-10T18:08:03+08:00
 lastmod: 2018-04-10T18:08:03+08:00
-categories: [basic]
+categories: [frontend]
 tags: []
 
 description: "探讨 MVC 框架中表现与数据分离的概念和实践"

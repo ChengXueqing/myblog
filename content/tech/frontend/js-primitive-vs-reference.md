@@ -3,7 +3,7 @@
 title: "ECMAScript基本类型值和引用类型值的区别"
 date: 2018-04-10T18:33:11+08:00
 lastmod: 2018-04-10T18:33:11+08:00
-categories: [basic]
+categories: [frontend]
 tags: []
 
 description: "深入理解 ECMAScript 中基本类型值和引用类型值在保存方式和复制方式上的区别"
