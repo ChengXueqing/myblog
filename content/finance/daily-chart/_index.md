@@ -17,7 +17,7 @@ tags: ["算力", "AI"]
 
 # 英伟达再度新高
 
-![英伟达股价](/images/finance/nvda-20260616.png)
+![英伟达股价](/myblog/images/finance/nvda-20260616.png)
 
 > H20 出口许可批了，但国产替代的逻辑没变——**中际旭创**的 1.6T 光模块还是得用。
 

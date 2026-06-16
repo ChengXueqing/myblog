@@ -9,7 +9,7 @@ slug: "ai-upstream-material-20260616"
 
 # AI上游材料涨价的六条线索
 
-![AI上游材料涨价](/images/finance/daily-chart/ai-upstream-material-20260616.jpg)
+![AI上游材料涨价](/myblog/images/finance/daily-chart/ai-upstream-material-20260616.jpg)
 
 > **来源**：兴证策略 张启尧团队 | 2026年6月16日
 
