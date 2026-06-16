@@ -37,9 +37,9 @@ pygmentsCodeFencesGuessSyntax = true
   weight = 1
 
 [[menu.main]]
-  identifier = "ai"
-  name = "AI 全栈 ⭐"
-  url = "/tech/ai/"
+  identifier = "finance"
+  name = "金融投资"
+  url = "/finance/"
   weight = 2
 
 [[menu.main]]
@@ -111,6 +111,11 @@ pygmentsCodeFencesGuessSyntax = true
   architecture = "/tech/architecture/:slug/"
   interview = "/tech/interview/:slug/"
   ai = "/tech/ai/:slug/"
+  finance = "/finance/:slug/"
+  strategy = "/finance/strategy/:slug/"
+  sectors = "/finance/sectors/:slug/"
+  portfolio = "/finance/portfolio/:slug/"
+  daily-chart = "/finance/daily-chart/:slug/"
   mind = "/mind/:slug/"
   dao = "/mind/dao/:slug/"
   poetry = "/mind/poetry/:slug/"
