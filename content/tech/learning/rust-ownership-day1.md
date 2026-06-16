@@ -46,7 +46,7 @@ Rust 选了第三条路：
 
 ### 卡点 1：「移动」到底在干什么？
 
-```rust
+```text
 let s1 = String::from("hello");
 let s2 = s1;  // s1 被移动了
 // println!("{}", s1);  // 编译错误！
@@ -62,7 +62,7 @@ let s2 = s1;  // s1 被移动了
 
 ### 卡点 2：借用为什么要有生命周期？
 
-```rust
+```text
 fn longest(x: &str, y: &str) -> &str {
     if x.len() > y.len() { x } else { y }
 }
