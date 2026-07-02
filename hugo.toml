@@ -94,6 +94,7 @@ pygmentsCodeFencesGuessSyntax = true
   [params.homeInfoParams]
     Title = "清净心"
     Content = "一个简单的技术博客"
+    imageUrl = "/myblog/images/avatar.png"
 
   # 社交图标
   [[params.socialIcons]]
